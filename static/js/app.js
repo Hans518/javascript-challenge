@@ -29,6 +29,7 @@ data.forEach((tableData) => {
 
 // Select the button
 var button = d3.select("#filter-btn");
+var reset_button = d3.select("#reset-btn");
 
 // Select form
 var form = d3.select("form");
@@ -37,6 +38,7 @@ var form = d3.select("form");
 
 // Create event handlers
 button.on("click", searchUFO);
+reset_button.on("click", resetPage);
 form.on("submit", searchUFO);
 
 
@@ -75,10 +77,6 @@ function searchUFO() {
         var filteredData = tableData.filter(tableData => tableData.shape === inputValue)
     }
 
-    else if (searchItem == "durationMinutes") {
-        var filteredData = tableData.filter(tableData => tableData.durationMinutes === inputValue)
-    }
-
 
     console.log(filteredData);
     
@@ -91,6 +89,10 @@ function searchUFO() {
     });
 
 };
+
+function resetPage() {
+    location.reload();
+}
 
 // datetime: "1/1/2010",
 // city: "benton",
